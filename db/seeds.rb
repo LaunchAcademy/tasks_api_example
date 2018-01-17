@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+
+names = [
+  'Get the bread',
+  'Get the milk',
+  'Hide your kids',
+  'Hide your wife'
+]
+
+names.each do |name|
+  if !Task.find_by(name: name)
+    Task.create!({
+      name: name,
+      description: 'A meme oriented task',
+      due_on: Date.today + rand(7).days
+    })
+  end
+end
